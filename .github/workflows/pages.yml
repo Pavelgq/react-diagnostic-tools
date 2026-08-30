@@ -1,0 +1,58 @@
+# Deploys the docs/landing site (site/) to GitHub Pages.
+#
+# Not active until you: (1) push this repo to GitHub, (2) enable Pages in
+# Settings > Pages with Source = "GitHub Actions". Nothing here runs until
+# then - this file is just checked in ready to go.
+
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # The site imports react-debug-tools from dist/, so the library must
+      # be built before the site is.
+      - name: Build the library
+        run: npm run build
+
+      - name: Build the static site
+        run: npm run build --workspace=site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

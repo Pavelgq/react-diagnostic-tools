@@ -1,0 +1,42 @@
+# Turns pending Changesets (see .changeset/, and `npm run changeset`) into
+# either a "Version Packages" PR or an actual npm publish, using the
+# standard changesets/action.
+#
+# Not active until you: (1) push this repo to GitHub, (2) add an NPM_TOKEN
+# secret in Settings > Secrets and variables > Actions (a token with publish
+# rights for the react-debug-tools package). GITHUB_TOKEN is provided
+# automatically by Actions.
+
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Create a "Version Packages" PR, or publish if one was just merged
+        uses: changesets/action@v1
+        with:
+          publish: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
