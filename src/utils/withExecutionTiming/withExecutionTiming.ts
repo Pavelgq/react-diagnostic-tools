@@ -2,7 +2,12 @@ import { getDebugToolsConfig } from '../../core/config';
 import { createRateLimiter } from '../../core/throttle';
 
 export interface WithExecutionTimingOptions {
-  /** Name used in the console output (default: 'withExecutionTiming') */
+  /**
+   * Name used in the console output. Defaults to `fn.name` (e.g. `const
+   * handleClick = () => {...}` infers the name `"handleClick"` from the
+   * assignment automatically), falling back to `'withExecutionTiming'` for
+   * an anonymous function with no inferred name.
+   */
   name?: string;
   /** Log a warning via the configured logger when duration exceeds this many milliseconds. */
   warnIfAbove?: number;
@@ -29,7 +34,7 @@ export function withExecutionTiming<Args extends unknown[], R>(
   fn: (...args: Args) => R,
   options: WithExecutionTimingOptions = {}
 ): (...args: Args) => R {
-  const { name = 'withExecutionTiming', warnIfAbove } = options;
+  const { name = fn.name || 'withExecutionTiming', warnIfAbove } = options;
   const rateLimiter = createRateLimiter();
 
   const report = (duration: number): void => {

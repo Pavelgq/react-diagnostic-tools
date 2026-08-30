@@ -26,6 +26,40 @@ describe('withExecutionTiming', () => {
     expect(add).toHaveBeenCalledWith(2, 3);
   });
 
+  it('infers the name from a named function via fn.name', () => {
+    const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
+    mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(4);
+
+    const handleClick = () => 'clicked';
+    const wrapped = withExecutionTiming(handleClick);
+    wrapped();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('⏱️ handleClick took 4.000ms');
+  });
+
+  it('falls back to the generic default name for an anonymous function', () => {
+    const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
+    mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(4);
+
+    const wrapped = withExecutionTiming(() => 'value');
+    wrapped();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      '⏱️ withExecutionTiming took 4.000ms'
+    );
+  });
+
+  it('lets an explicit options.name override the inferred function name', () => {
+    const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
+    mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(4);
+
+    const handleClick = () => 'clicked';
+    const wrapped = withExecutionTiming(handleClick, { name: 'CustomName' });
+    wrapped();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('⏱️ CustomName took 4.000ms');
+  });
+
   it('logs the duration of a synchronous call', () => {
     const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
     mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(4);

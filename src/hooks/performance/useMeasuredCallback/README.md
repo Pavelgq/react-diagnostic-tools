@@ -45,7 +45,11 @@ function useMeasuredCallback<T extends (...args: never[]) => unknown>(
 
 ```tsx
 interface UseMeasuredCallbackOptions {
-  /** Name used in the console output (default: 'withExecutionTiming') */
+  /**
+   * Name used in the console output. Defaults to `callback.name` (e.g.
+   * `const handleClick = () => {...}` infers "handleClick" automatically),
+   * falling back to 'withExecutionTiming' for an anonymous function.
+   */
   name?: string;
   /** Log a warning when duration exceeds this many milliseconds. */
   warnIfAbove?: number;

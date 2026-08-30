@@ -61,4 +61,15 @@ describe('useMeasuredCallback', () => {
 
     expect(consoleLogSpy).toHaveBeenCalledWith('⏱️ HandleClick took 6.000ms');
   });
+
+  it('infers the name from a named callback when options.name is omitted', () => {
+    const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
+    mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(6);
+
+    const handleSubmit = () => 'value';
+    const { result } = renderHook(() => useMeasuredCallback(handleSubmit, [1]));
+    result.current();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('⏱️ handleSubmit took 6.000ms');
+  });
 });
