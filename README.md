@@ -11,12 +11,20 @@ performance during development.
 
 ## Install
 
-It's a dev-time debugging tool, so it belongs in `devDependencies` - though
-that's just hygiene, not the safety net (see below):
-
 ```bash
-npm install --save-dev @atmelab/react-bugfinder
+npm install @atmelab/react-bugfinder
 ```
+
+Install it as a regular dependency, not `devDependencies`. The dependency
+type has no effect on what ends up in your production bundle - bundlers
+resolve modules by whether they exist in `node_modules`, not by which
+`package.json` section listed them. If your hooks run inside a `'use client'`
+component in a framework like Next.js, the server process actually
+`require()`s the package during the initial SSR render - and a lean-runtime
+Docker stage that does `npm ci --omit=dev` before starting the server would
+crash on that `require()` if it were a devDependency. The actual production
+safety net is the `NODE_ENV` check described below, not where the package
+lives in `package.json`.
 
 ## Quick start
 

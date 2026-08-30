@@ -78,7 +78,7 @@ const HomePage: FC = () => {
           A small collection of React hooks for debugging renders, state, and
           performance during development.
         </p>
-        <InstallCommand command="npm install --save-dev @atmelab/react-bugfinder" />
+        <InstallCommand command="npm install @atmelab/react-bugfinder" />
         <div className="rdt-hero-actions">
           <Link className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks
