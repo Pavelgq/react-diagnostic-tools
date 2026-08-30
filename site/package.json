@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "pagefind --site out --output-subdir _pagefind",
     "start": "next start",
     "postinstall": "cd .. && patch-package --patch-dir site/patches"
   },
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
+    "pagefind": "^1.5.2",
     "patch-package": "^8.0.0",
     "typescript": "~6.0.3"
   }
