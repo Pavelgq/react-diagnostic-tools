@@ -2,10 +2,19 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { useMemoPerformance } from 'react-debug-tools';
+import { ClientOnly } from '../ClientOnly';
 
 export function UseMemoPerformanceDemo() {
+  return (
+    <ClientOnly fallback={<div className="rdt-demo">Loading demo…</div>}>
+      <UseMemoPerformanceDemoInner />
+    </ClientOnly>
+  );
+}
+
+function UseMemoPerformanceDemoInner() {
   const [count, setCount] = useState(0);
-  const [items, setItems] = useState(2000);
+  const [items, setItems] = useState(50000);
 
   const expensiveCalculation = useCallback(() => {
     return Array.from({ length: items }, (_, i) => i)
@@ -13,8 +22,11 @@ export function UseMemoPerformanceDemo() {
       .reduce((sum, n) => sum + n, 0);
   }, [items]);
 
+  // minCalls: 1 - useMemoPerformance's call count currently never grows past 1
+  // in real usage (see its README's "Known limitation"), so a higher
+  // threshold here would mean the console report never appears.
   const stats = useMemoPerformance(expensiveCalculation, [items], {
-    minCalls: 3,
+    minCalls: 1,
     performanceThreshold: 1,
     enableLogging: true,
     name: 'ExpensiveCalculation',

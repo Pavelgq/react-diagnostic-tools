@@ -2,8 +2,17 @@
 
 import { useState } from 'react';
 import { useExecutionTime } from 'react-debug-tools';
+import { ClientOnly } from '../ClientOnly';
 
 export function UseExecutionTimeDemo() {
+  return (
+    <ClientOnly fallback={<div className="rdt-demo">Loading demo…</div>}>
+      <UseExecutionTimeDemoInner />
+    </ClientOnly>
+  );
+}
+
+function UseExecutionTimeDemoInner() {
   const [size, setSize] = useState(1000);
 
   const { result, duration } = useExecutionTime(
