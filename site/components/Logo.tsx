@@ -8,37 +8,60 @@ export function Logo({ size = 24 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <ellipse cx="16" cy="19" rx="9" ry="8.5" fill="#dc2626" />
+      <defs>
+        <linearGradient id="rdt-body" x1="7" y1="11" x2="25" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#f0554a" />
+          <stop offset="1" stopColor="#b91c1c" />
+        </linearGradient>
+        <linearGradient id="rdt-head" x1="12" y1="5.5" x2="20" y2="13" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#3f4a5c" />
+          <stop offset="1" stopColor="#1b2332" />
+        </linearGradient>
+      </defs>
+
       <path
-        d="M16 10.5 L16 27.5"
-        stroke="#7f1d1d"
-        strokeWidth="1.2"
-        strokeLinecap="round"
+        d="M11.2 5.2 Q9 3.6 7.1 4.3 Q8.6 6 10 7.6 Z"
+        fill="url(#rdt-head)"
       />
-      <circle cx="16" cy="9" r="4" fill="#1f2937" />
-      <line
-        x1="14"
-        y1="6.5"
-        x2="11"
-        y2="3.5"
-        stroke="#1f2937"
-        strokeWidth="1.3"
-        strokeLinecap="round"
+      <path
+        d="M20.8 5.2 Q23 3.6 24.9 4.3 Q23.4 6 22 7.6 Z"
+        fill="url(#rdt-head)"
       />
-      <line
-        x1="18"
-        y1="6.5"
-        x2="21"
-        y2="3.5"
-        stroke="#1f2937"
-        strokeWidth="1.3"
+
+      <ellipse cx="16" cy="19.5" rx="9.2" ry="8.7" fill="url(#rdt-body)" />
+      <path
+        d="M16 11.4 C13.6 15.4 13.6 23.6 16 28"
+        stroke="#8a1f1f"
+        strokeWidth="1.1"
         strokeLinecap="round"
+        fill="none"
+        opacity="0.55"
       />
-      <circle cx="12" cy="16" r="1.7" fill="#1f2937" />
-      <circle cx="20" cy="16" r="1.7" fill="#1f2937" />
-      <circle cx="11.5" cy="22.5" r="1.7" fill="#1f2937" />
-      <circle cx="20.5" cy="22.5" r="1.7" fill="#1f2937" />
-      <circle cx="16" cy="24.5" r="1.5" fill="#1f2937" />
+      <path
+        d="M16 11.4 C18.4 15.4 18.4 23.6 16 28"
+        stroke="#8a1f1f"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.55"
+      />
+      <ellipse
+        cx="12.5"
+        cy="15"
+        rx="3.1"
+        ry="2.1"
+        fill="#ffffff"
+        opacity="0.22"
+        transform="rotate(-25 12.5 15)"
+      />
+
+      <ellipse cx="16" cy="8.6" rx="4.1" ry="3.9" fill="url(#rdt-head)" />
+
+      <circle cx="11.6" cy="16.6" r="1.9" fill="#2a1010" />
+      <circle cx="20.4" cy="16.6" r="1.9" fill="#2a1010" />
+      <circle cx="10.8" cy="23" r="1.7" fill="#2a1010" />
+      <circle cx="21.2" cy="23" r="1.7" fill="#2a1010" />
+      <circle cx="16" cy="25.4" r="1.5" fill="#2a1010" />
     </svg>
   );
 }
