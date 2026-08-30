@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useExecutionTime } from '@atmelab/react-diagnostic-tools';
+import { useExecutionTime } from '@atme-lab/react-diagnostic-tools';
 
 export function UseExecutionTimeDemo() {
   const [size, setSize] = useState(1000);

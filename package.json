@@ -1,5 +1,5 @@
 {
-  "name": "@atmelab/react-diagnostic-tools",
+  "name": "@atme-lab/react-diagnostic-tools",
   "version": "0.0.1",
   "type": "module",
   "description": "A small collection of React hooks for debugging renders, state, and performance during development",

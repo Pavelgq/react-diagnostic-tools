@@ -11,7 +11,7 @@ context, or a parent re-rendering with referentially-equal props.
 ## Usage
 
 ```tsx
-import { useRenderCount } from '@atmelab/react-diagnostic-tools';
+import { useRenderCount } from '@atme-lab/react-diagnostic-tools';
 
 function MyComponent() {
   const renderCount = useRenderCount('MyComponent');

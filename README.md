@@ -1,7 +1,7 @@
 # React Diagnostic Tools
 
 [![CI](https://github.com/Pavelgq/react-diagnostic-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/Pavelgq/react-diagnostic-tools/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/%40atmelab%2Freact-diagnostic-tools)](https://www.npmjs.com/package/@atmelab/react-diagnostic-tools)
+[![npm version](https://img.shields.io/npm/v/%40atmelab%2Freact-diagnostic-tools)](https://www.npmjs.com/package/@atme-lab/react-diagnostic-tools)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A small collection of React hooks for debugging renders, state, and
@@ -12,7 +12,7 @@ performance during development.
 ## Install
 
 ```bash
-npm install @atmelab/react-diagnostic-tools
+npm install @atme-lab/react-diagnostic-tools
 ```
 
 Install it as a regular dependency, not `devDependencies`. The dependency
@@ -29,7 +29,7 @@ lives in `package.json`.
 ## Quick start
 
 ```tsx
-import { useWhyRender } from '@atmelab/react-diagnostic-tools';
+import { useWhyRender } from '@atme-lab/react-diagnostic-tools';
 
 function MyComponent(props: { name: string; age: number }) {
   useWhyRender(props, 'MyComponent');
@@ -46,7 +46,7 @@ this). To override the default, swap the logger, or throttle noisy logs,
 call `configureDebugTools` once at your app's entry point:
 
 ```tsx
-import { configureDebugTools } from '@atmelab/react-diagnostic-tools';
+import { configureDebugTools } from '@atme-lab/react-diagnostic-tools';
 
 configureDebugTools({
   enabled: true, // e.g. force it on even in a production build, for a staging environment

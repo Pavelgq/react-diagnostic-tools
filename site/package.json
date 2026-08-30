@@ -15,7 +15,7 @@
     "nextra-theme-docs": "^4.6.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "@atmelab/react-diagnostic-tools": "file:.."
+    "@atme-lab/react-diagnostic-tools": "file:.."
   },
   "devDependencies": {
     "@types/react": "^19.2.18",

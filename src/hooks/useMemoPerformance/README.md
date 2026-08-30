@@ -22,7 +22,7 @@ you a recommendation on whether memoizing is paying off.
 ## Usage
 
 ```tsx
-import { useMemoPerformance } from '@atmelab/react-diagnostic-tools';
+import { useMemoPerformance } from '@atme-lab/react-diagnostic-tools';
 
 function MyComponent({ items }) {
   const expensiveCalculation = () => {

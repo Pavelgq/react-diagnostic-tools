@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { usePrevious } from '@atmelab/react-diagnostic-tools';
+import { usePrevious } from '@atme-lab/react-diagnostic-tools';
 
 export function UsePreviousDemo() {
   const [count, setCount] = useState(0);

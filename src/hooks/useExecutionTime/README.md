@@ -23,7 +23,7 @@ client, so exposing it immediately would cause a hydration mismatch.
 ## Usage
 
 ```tsx
-import { useExecutionTime } from '@atmelab/react-diagnostic-tools';
+import { useExecutionTime } from '@atme-lab/react-diagnostic-tools';
 
 function DataTable({ rows }: { rows: Row[] }) {
   const { result: sorted, duration } = useExecutionTime(

@@ -14,7 +14,7 @@ code.
 ## Usage
 
 ```tsx
-import { useTrackedValue } from '@atmelab/react-diagnostic-tools';
+import { useTrackedValue } from '@atme-lab/react-diagnostic-tools';
 
 function MyComponent({ items }: { items: string[] }) {
   const activeCount = useTrackedValue(

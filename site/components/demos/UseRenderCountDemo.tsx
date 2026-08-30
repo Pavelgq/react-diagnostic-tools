@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRenderCount } from '@atmelab/react-diagnostic-tools';
+import { useRenderCount } from '@atme-lab/react-diagnostic-tools';
 
 export function UseRenderCountDemo() {
   const [count, setCount] = useState(0);

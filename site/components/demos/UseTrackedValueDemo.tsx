@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTrackedValue } from '@atmelab/react-diagnostic-tools';
+import { useTrackedValue } from '@atme-lab/react-diagnostic-tools';
 
 export function UseTrackedValueDemo() {
   const [items, setItems] = useState(['a', 'b', '']);

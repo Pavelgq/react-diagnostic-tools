@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useWhyRender } from '@atmelab/react-diagnostic-tools';
+import { useWhyRender } from '@atme-lab/react-diagnostic-tools';
 
 interface InnerProps {
   name: string;

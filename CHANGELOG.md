@@ -1,4 +1,4 @@
-# @atmelab/react-diagnostic-tools
+# @atme-lab/react-diagnostic-tools
 
 ## 0.0.1
 

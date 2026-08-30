@@ -78,7 +78,7 @@ const HomePage: FC = () => {
           A small collection of React hooks for debugging renders, state, and
           performance during development.
         </p>
-        <InstallCommand command="npm install @atmelab/react-diagnostic-tools" />
+        <InstallCommand command="npm install @atme-lab/react-diagnostic-tools" />
         <div className="rdt-hero-actions">
           <Link className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks
@@ -91,7 +91,7 @@ const HomePage: FC = () => {
           </a>
           <a
             className="rdt-btn"
-            href="https://www.npmjs.com/package/@atmelab/react-diagnostic-tools"
+            href="https://www.npmjs.com/package/@atme-lab/react-diagnostic-tools"
           >
             npm
           </a>
