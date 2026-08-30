@@ -1,13 +1,13 @@
-# React Debug Tools
+# React Bugfinder
 
-[![CI](https://github.com/Pavelgq/react-debug-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/Pavelgq/react-debug-tools/actions/workflows/ci.yml)
+[![CI](https://github.com/Pavelgq/react-bugfinder/actions/workflows/ci.yml/badge.svg)](https://github.com/Pavelgq/react-bugfinder/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/%40atmelab%2Freact-bugfinder)](https://www.npmjs.com/package/@atmelab/react-bugfinder)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A small collection of React hooks for debugging renders, state, and
 performance during development.
 
-📖 **[Docs and live demos](https://pavelgq.github.io/react-debug-tools/)**
+📖 **[Docs and live demos](https://pavelgq.github.io/react-bugfinder/)**
 
 ## Install
 

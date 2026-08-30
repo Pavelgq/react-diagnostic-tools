@@ -7,12 +7,12 @@ import { Logo } from '../components/Logo';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
 
-const REPO_URL = 'https://github.com/Pavelgq/react-debug-tools';
+const REPO_URL = 'https://github.com/Pavelgq/react-bugfinder';
 
 export const metadata: Metadata = {
   title: {
-    default: 'React Debug Tools',
-    template: '%s | React Debug Tools',
+    default: 'React Bugfinder',
+    template: '%s | React Bugfinder',
   },
   description:
     'A small collection of React hooks for debugging renders, state, and performance during development.',
@@ -23,7 +23,7 @@ const navbar = (
     logo={
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
         <Logo size={22} />
-        <b>React Debug Tools</b>{' '}
+        <b>React Bugfinder</b>{' '}
         <span style={{ opacity: 0.6 }}>hooks for debugging React apps</span>
       </span>
     }
@@ -34,7 +34,7 @@ const navbar = (
 const footer = (
   <Footer>
     <span>
-      MIT {new Date().getFullYear()} © React Debug Tools.
+      MIT {new Date().getFullYear()} © React Bugfinder.
     </span>
   </Footer>
 );

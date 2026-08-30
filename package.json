@@ -65,10 +65,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pavelgq/react-debug-tools.git"
+    "url": "https://github.com/Pavelgq/react-bugfinder.git"
   },
   "bugs": {
-    "url": "https://github.com/Pavelgq/react-debug-tools/issues"
+    "url": "https://github.com/Pavelgq/react-bugfinder/issues"
   },
-  "homepage": "https://github.com/Pavelgq/react-debug-tools#readme"
+  "homepage": "https://github.com/Pavelgq/react-bugfinder#readme"
 }

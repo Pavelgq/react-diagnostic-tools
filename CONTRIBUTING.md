@@ -6,8 +6,8 @@ process is intentionally lightweight.
 ## Getting set up
 
 ```bash
-git clone git@github.com:Pavelgq/react-debug-tools.git
-cd react-debug-tools
+git clone git@github.com:Pavelgq/react-bugfinder.git
+cd react-bugfinder
 npm install
 ```
 

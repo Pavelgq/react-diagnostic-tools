@@ -73,7 +73,7 @@ const HomePage: FC = () => {
   return (
     <>
       <section className="rdt-hero">
-        <h1>React Debug Tools</h1>
+        <h1>React Bugfinder</h1>
         <p className="rdt-tagline">
           A small collection of React hooks for debugging renders, state, and
           performance during development.
@@ -85,7 +85,7 @@ const HomePage: FC = () => {
           </Link>
           <a
             className="rdt-btn"
-            href="https://github.com/Pavelgq/react-debug-tools"
+            href="https://github.com/Pavelgq/react-bugfinder"
           >
             GitHub
           </a>
