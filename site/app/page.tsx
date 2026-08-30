@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import { Cards } from 'nextra/components';
+import { InstallCommand } from '../components/InstallCommand';
 
 interface HookLink {
   name: string;
@@ -77,7 +78,7 @@ const HomePage: FC = () => {
           A small collection of React hooks for debugging renders, state, and
           performance during development.
         </p>
-        <code className="rdt-install">npm install @atmelab/react-bugfinder</code>
+        <InstallCommand command="npm install --save-dev @atmelab/react-bugfinder" />
         <div className="rdt-hero-actions">
           <Link className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks

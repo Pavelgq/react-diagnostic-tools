@@ -11,8 +11,10 @@ performance during development.
 
 ## Install
 
+It's a dev-time debugging tool, so it belongs in `devDependencies`:
+
 ```bash
-npm install @atmelab/react-bugfinder
+npm install --save-dev @atmelab/react-bugfinder
 ```
 
 ## Quick start

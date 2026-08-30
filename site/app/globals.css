@@ -85,13 +85,34 @@
 .rdt-install {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 1.1rem;
+  gap: 1rem;
+  padding: 0.7rem 0.7rem 0.7rem 1.1rem;
   border-radius: 0.5rem;
   border-left: 3px solid var(--rdt-accent);
   background: #00000010;
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.95rem;
+}
+
+.rdt-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.rdt-copy-btn:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
 }
 
 .rdt-section {
