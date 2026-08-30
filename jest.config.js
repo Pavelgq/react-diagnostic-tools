@@ -5,9 +5,11 @@ export default {
   collectCoverageFrom: [
     'src/hooks/**/*.{ts,tsx}',
     'src/core/**/*.{ts,tsx}',
+    'src/utils/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
     '!src/setupTests.ts',
     '!src/**/examples/**/*',
+    '!src/**/index.ts',
   ],
   coverageThreshold: {
     global: {
