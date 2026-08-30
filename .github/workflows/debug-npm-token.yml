@@ -1,0 +1,28 @@
+name: Debug NPM token format
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check NPM_TOKEN shape (no value printed)
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          len=${#NPM_TOKEN}
+          echo "length: $len"
+          case "$NPM_TOKEN" in
+            npm_*) echo "starts_with_npm_: yes" ;;
+            *) echo "starts_with_npm_: no" ;;
+          esac
+          case "$NPM_TOKEN" in
+            *[[:space:]]*) echo "contains_whitespace: YES" ;;
+            *) echo "contains_whitespace: no" ;;
+          esac
+          case "$NPM_TOKEN" in
+            *\"*|*\'*) echo "contains_quote_char: YES" ;;
+            *) echo "contains_quote_char: no" ;;
+          esac
+          printf '%s' "$NPM_TOKEN" | od -c | grep -q '\\r' && echo "contains_CR: YES" || echo "contains_CR: no"
