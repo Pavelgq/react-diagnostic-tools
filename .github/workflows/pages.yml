@@ -33,13 +33,20 @@ jobs:
 
       - run: npm install
 
-      # The site imports react-debug-tools from dist/, so the library must
-      # be built before the site is.
+      # site/ is a standalone project (its own package.json and lockfile,
+      # not an npm workspace) that depends on the library via `file:..`, so
+      # the library must be built before the site is, and the site needs
+      # its own install.
       - name: Build the library
         run: npm run build
 
+      - name: Install site dependencies
+        run: npm install
+        working-directory: site
+
       - name: Build the static site
-        run: npm run build --workspace=site
+        run: npm run build
+        working-directory: site
         env:
           GITHUB_PAGES: 'true'
 

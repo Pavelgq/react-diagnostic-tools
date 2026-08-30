@@ -7,7 +7,7 @@
     "build": "next build",
     "postbuild": "pagefind --site out --output-subdir _pagefind",
     "start": "next start",
-    "postinstall": "cd .. && patch-package --patch-dir site/patches"
+    "postinstall": "patch-package --patch-dir patches"
   },
   "dependencies": {
     "next": "^16.3.3",

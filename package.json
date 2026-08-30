@@ -9,9 +9,6 @@
   "files": [
     "dist"
   ],
-  "workspaces": [
-    "site"
-  ],
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
