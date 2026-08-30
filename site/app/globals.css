@@ -1,0 +1,177 @@
+/* Shared utility styles for the landing page and hook demo components. */
+
+.rdt-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 4rem 1.5rem 3rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.rdt-hero h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.rdt-hero p.rdt-tagline {
+  font-size: 1.15rem;
+  max-width: 40rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.rdt-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.rdt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid currentColor;
+  transition: opacity 0.15s ease;
+}
+
+.rdt-btn:hover {
+  opacity: 0.75;
+}
+
+.rdt-btn-primary {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+:root:not([data-theme='light']) .rdt-btn-primary {
+  background: #f5f5f5;
+  color: #111;
+  border-color: #f5f5f5;
+}
+
+.rdt-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0.5rem;
+  background: #00000010;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.95rem;
+}
+
+.rdt-section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+.rdt-section h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.rdt-category {
+  margin-bottom: 2.5rem;
+}
+
+.rdt-category h3 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  margin-bottom: 0.9rem;
+}
+
+.rdt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+/* Demo boxes embedded in each hook's documentation page */
+
+.rdt-demo {
+  border: 1px solid currentColor;
+  border-color: color-mix(in srgb, currentColor 15%, transparent);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+.rdt-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.rdt-demo button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rdt-demo button:hover {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.rdt-demo label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.rdt-demo input[type='number'],
+.rdt-demo input[type='text'] {
+  width: 6rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.35rem;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  background: transparent;
+  color: inherit;
+}
+
+.rdt-demo-stats {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+.rdt-demo-stats strong {
+  font-weight: 700;
+}
+
+.rdt-demo-note {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 0.75rem;
+}
+
+.rdt-inner-box {
+  border: 1px dashed color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+}

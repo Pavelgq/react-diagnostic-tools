@@ -1,0 +1,161 @@
+---
+title: useMemoPerformance
+description: Analyzes whether a useMemo is actually worth it.
+---
+
+import { UseMemoPerformanceDemo } from '@/components/demos/UseMemoPerformanceDemo';
+
+# useMemoPerformance
+
+A hook that analyzes `useMemo` performance and tells you whether it's
+actually worth using.
+
+`useMemoPerformance` measures how long a computation takes and provides
+detailed statistics and a recommendation on whether memoization is helping:
+
+- **Timing** - measures the actual execution time of the function on its
+  first run
+- **Smart recommendations** - suggests whether memoization is worth it
+- **Detailed stats** - call count, computations, skips, cache and
+  memoization efficiency
+- **Warnings** - flags inefficient use of `useMemo`
+- **Logging** - detailed performance reports in the console
+
+## Live demo
+
+Change the item count to force a fresh computation, or click "Re-render" to
+see the same computation get skipped thanks to memoization. Open the
+console for the full report.
+
+<UseMemoPerformanceDemo />
+
+## Usage
+
+```tsx
+import { useMemo } from 'react';
+import { useMemoPerformance } from 'react-debug-tools';
+
+function MyComponent({ items }) {
+  const expensiveCalculation = () => {
+    return items
+      .filter((item) => item.active)
+      .map((item) => item.value * 2)
+      .reduce((sum, val) => sum + val, 0);
+  };
+
+  const performanceStats = useMemoPerformance(expensiveCalculation, [items], {
+    minCalls: 5,
+    performanceThreshold: 1,
+    enableLogging: true,
+    name: 'ExpensiveCalculation',
+  });
+
+  const memoizedValue = useMemo(() => expensiveCalculation(), [items]);
+
+  return (
+    <div>
+      <p>Result: {memoizedValue}</p>
+      <p>
+        useMemo worth it: {performanceStats.isMemoizationWorthIt ? 'Yes' : 'No'}
+      </p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+```tsx
+useMemoPerformance<T>(
+  computeFn: () => T,
+  deps: React.DependencyList,
+  options?: UseMemoPerformanceOptions
+): MemoPerformanceStats
+```
+
+- `computeFn` - the computation function whose performance you want to
+  measure
+- `deps` - the dependency list, forwarded straight to the underlying
+  `useMemo`
+- `options` (optional):
+
+```tsx
+interface UseMemoPerformanceOptions {
+  /** Minimum number of calls before analyzing (default: 10) */
+  minCalls?: number;
+  /** Threshold in milliseconds above which useMemo is considered worth it (default: 1) */
+  performanceThreshold?: number;
+  /** Enable detailed console logging */
+  enableLogging?: boolean;
+  /** Name used in the console output */
+  name?: string;
+}
+```
+
+### Return value
+
+```tsx
+interface MemoPerformanceStats {
+  /** Execution time of the function on its first run (in milliseconds) */
+  baselineTime: number;
+  /** Number of times the function was called */
+  callCount: number;
+  /** Number of cache hits (when useMemo did not recompute) */
+  cacheHits: number;
+  /** Number of cache misses (when useMemo did recompute) */
+  cacheMisses: number;
+  /** Cache efficiency, in percent */
+  cacheEfficiency: number;
+  /** Number of computations (when the function actually ran) */
+  computationCount: number;
+  /** Number of computations skipped thanks to memoization */
+  skippedComputations: number;
+  /** Memoization efficiency, in percent */
+  memoizationEfficiency: number;
+  /** Average cost of a computation (in milliseconds) */
+  averageComputationCost: number;
+  /** Recommendation: is memoization worth it here */
+  isMemoizationWorthIt: boolean;
+  /** Reason behind the recommendation */
+  recommendationReason: string;
+  /** Warnings about inefficient usage */
+  warnings: string[];
+}
+```
+
+## Recommendations
+
+`useMemo` tends to be worth it when the computation takes more than 1-2ms,
+is called frequently, and dependencies rarely change. It tends to be
+overkill for simple arithmetic, very fast computations, or dependencies that
+change on every render.
+
+## Logging
+
+When logging is enabled, the hook prints a report to the console:
+
+```
+📊 ExpensiveCalculation - useMemo performance analysis
+Calls: 5
+Computations: 1
+Skipped: 4
+Baseline time: 2.150ms
+Average computation cost: 2.150ms
+Cache hits: 4
+Cache misses: 1
+Cache efficiency: 80.0%
+Memoization efficiency: 80.0%
+Is memoization worth it: ✅ Yes
+Reason: High cache efficiency (80.0%) and a slow function (2.150ms)
+```
+
+## Known limitation
+
+Cache-hit tracking (`cacheHits`, `cacheEfficiency`) is currently always `0`
+in practice: `useMemo` simply doesn't call its factory again when
+dependencies are unchanged, so the "cache hit" branch inside it can't run,
+and a genuine dependency change resets the tracked stats before the factory
+runs. This is a known issue tracked for a future fix, not something you need
+to work around.

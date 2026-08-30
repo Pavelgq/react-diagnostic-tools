@@ -1,0 +1,78 @@
+---
+title: useWhyRender
+description: Logs which props changed and caused a re-render.
+---
+
+import { UseWhyRenderDemo } from '@/components/demos/UseWhyRenderDemo';
+
+# useWhyRender
+
+A hook for debugging React re-renders. It reports which props changed and
+triggered the re-render.
+
+## Live demo
+
+Click the buttons below and open your browser console - each render logs
+exactly which props changed and their old/new values.
+
+<UseWhyRenderDemo />
+
+## Usage
+
+```tsx
+import { useWhyRender } from 'react-debug-tools';
+
+interface MyComponentProps {
+  name: string;
+  age: number;
+  isActive: boolean;
+}
+
+function MyComponent({ name, age, isActive }: MyComponentProps) {
+  useWhyRender({ name, age, isActive }, 'MyComponent');
+
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>Age: {age}</p>
+      <p>Status: {isActive ? 'Active' : 'Inactive'}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+```tsx
+function useWhyRender(props: Record<string, any>, name?: string): WhyRenderInfo;
+```
+
+**Parameters:**
+
+- `props` - the component's props
+- `name` - component name used in the console output (optional)
+
+**Returns:**
+
+```tsx
+interface WhyRenderInfo {
+  changedProps: Record<string, { from: any; to: any }>;
+  changedPropsCount: number;
+  renderCount: number;
+}
+```
+
+- `changedProps` - the props that changed and their old/new values
+- `changedPropsCount` - how many props changed
+- `renderCount` - how many times the component has rendered
+
+## Console output example
+
+```
+🔄 MyComponent rendered (2)
+Changed props: {
+  age: { from: 25, to: 26 },
+  isActive: { from: false, to: true }
+}
+All props: { name: "John", age: 26, isActive: true }
+```

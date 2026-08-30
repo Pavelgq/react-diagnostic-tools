@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+
+# Static export output
+out/
+
+# TypeScript
+next-env.d.ts
+*.tsbuildinfo

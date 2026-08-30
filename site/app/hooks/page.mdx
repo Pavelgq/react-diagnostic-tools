@@ -1,0 +1,31 @@
+---
+title: Hooks overview
+description: All 8 React Debug Tools hooks, grouped by category.
+---
+
+# Hooks
+
+**React Debug Tools** ships 8 hooks grouped into 4 categories. Pick one
+below, or use the sidebar to jump straight to a hook's page - each one has a
+full API reference and a live, interactive demo you can play with (open your
+browser console to see the real log output).
+
+## Render debugging
+
+- [`useWhyRender`](/hooks/useWhyRender) - logs which props changed and caused a re-render
+- [`useRenderCount`](/hooks/useRenderCount) - counts every render, regardless of cause
+- [`useTraceRender`](/hooks/useTraceRender) - logs the full props on every render, changed or not
+
+## Refs
+
+- [`usePrevious`](/hooks/usePrevious) - returns the value from the previous render
+- [`useTrackedValue`](/hooks/useTrackedValue) - labels a value in DevTools and logs it on change
+
+## Performance
+
+- [`useMemoPerformance`](/hooks/useMemoPerformance) - analyzes whether a `useMemo` is actually worth it
+- [`useExecutionTime`](/hooks/useExecutionTime) - measures a function's execution time, with a `warnIfAbove` threshold
+
+## State
+
+- [`useStateLogger`](/hooks/useStateLogger) - a drop-in `useState` that logs every change
