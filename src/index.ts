@@ -6,6 +6,7 @@ export { useTraceRender } from './hooks/useTraceRender';
 export { useStateLogger } from './hooks/useStateLogger';
 export { useTrackedValue } from './hooks/useTrackedValue';
 export { useExecutionTime } from './hooks/useExecutionTime';
+export { useMemoGuard } from './hooks/useMemoGuard';
 
 export { configureDebugTools, getDebugToolsConfig } from './core/config';
 export type {
@@ -13,3 +14,8 @@ export type {
   DebugToolsConfig,
   DebugToolsOptions,
 } from './core';
+export type {
+  MemoGuardComparison,
+  MemoGuardResult,
+  UseMemoGuardOptions,
+} from './hooks/useMemoGuard';

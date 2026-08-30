@@ -81,6 +81,7 @@ follow the links below.
 | --- | --- |
 | [`useMemoPerformance`](src/hooks/useMemoPerformance/README.md) | Analyzes whether a `useMemo` is actually worth it |
 | [`useExecutionTime`](src/hooks/useExecutionTime/README.md) | Measures a function's execution time, with a `warnIfAbove` threshold |
+| [`useMemoGuard`](src/hooks/useMemoGuard/README.md) | An on-demand A/B benchmark: measures a `useMemo` with and without the cache, on request |
 
 ### State
 
@@ -159,7 +160,6 @@ panels, or deep-equal comparisons:
 - `useNetworkActivity` - tracks in-flight HTTP requests to spot leaks or excessive polling
 - `useVisualNesting` - highlights a component's DOM nesting depth
 - `useComponentTiming` / `useProfiler` - a manual `start()`/`stop()` timer for arbitrary code
-- `useMemoGuard` - a real, on-demand A/B benchmark for a `useMemo`: exposes a "run comparison" trigger (e.g. a diagnostic button) that actually re-invokes the computation both with and without memoization at runtime and logs the two timings side by side, instead of `useMemoPerformance`'s inferred cache-hit-rate estimate
 
 ## Contributing
 

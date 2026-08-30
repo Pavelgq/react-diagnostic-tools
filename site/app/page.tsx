@@ -56,6 +56,11 @@ const categories: Category[] = [
         description:
           "Measures a function's execution time, with a warnIfAbove threshold",
       },
+      {
+        name: 'useMemoGuard',
+        description:
+          'An on-demand A/B benchmark: measures a useMemo with and without the cache, on request',
+      },
     ],
   },
   {
@@ -99,7 +104,7 @@ const HomePage: FC = () => {
       </section>
 
       <section className="rdt-section">
-        <h2>8 hooks, 4 categories</h2>
+        <h2>9 hooks, 4 categories</h2>
         {categories.map((category) => (
           <div className="rdt-category" key={category.title}>
             <h3>{category.title}</h3>

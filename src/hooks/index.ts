@@ -6,3 +6,4 @@ export * from './useTraceRender';
 export * from './useStateLogger';
 export * from './useTrackedValue';
 export * from './useExecutionTime';
+export * from './useMemoGuard';
