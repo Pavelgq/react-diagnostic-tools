@@ -1,0 +1,46 @@
+# useStateLogger
+
+A drop-in replacement for `useState` that logs every state change to the
+console.
+
+## Description
+
+`useStateLogger` has the exact same signature and return shape as
+`useState`. Swap one for the other to start logging state changes - the
+previous value, the new value, and how many times it has changed so far.
+It does not log on the initial render.
+
+## Usage
+
+```tsx
+import { useStateLogger } from 'react-debug-tools';
+
+function Counter() {
+  const [count, setCount] = useStateLogger(0, 'count');
+
+  return (
+    <button onClick={() => setCount((c) => c + 1)}>Count: {count}</button>
+  );
+}
+```
+
+## API
+
+```tsx
+function useStateLogger<T>(
+  initialValue: T | (() => T),
+  name?: string
+): [T, Dispatch<SetStateAction<T>>];
+```
+
+- `initialValue` - same as `useState`'s initial value (or initializer function)
+- `name` - name used in the console output (optional)
+- Returns the same `[state, setState]` tuple as `useState`
+
+## Console output example
+
+```
+📦 count changed (1)
+From: 0
+To: 1
+```

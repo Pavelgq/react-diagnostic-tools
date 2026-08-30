@@ -1,0 +1,36 @@
+# useRenderCount
+
+Returns how many times a component has rendered, for any reason at all.
+
+## Description
+
+Unlike `useWhyRender`, which only reports renders that changed a prop,
+`useRenderCount` counts every render regardless of cause - state, props,
+context, or a parent re-rendering with referentially-equal props.
+
+## Usage
+
+```tsx
+import { useRenderCount } from 'react-debug-tools';
+
+function MyComponent() {
+  const renderCount = useRenderCount('MyComponent');
+
+  return <p>Rendered {renderCount} times</p>;
+}
+```
+
+## API
+
+```tsx
+function useRenderCount(name?: string): number;
+```
+
+- `name` - component name used in the console output (optional)
+- Returns the current render count (starts at `1`)
+
+## Console output example
+
+```
+🔁 MyComponent render count: 3
+```
