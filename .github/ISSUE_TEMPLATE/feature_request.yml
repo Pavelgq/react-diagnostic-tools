@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a new hook, or an improvement to an existing one
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: What are you trying to debug/observe that's currently awkward or impossible?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: If you have an idea for the hook's signature or behavior, sketch it out.
+      render: tsx
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds you're using today, or other libraries that solve this.
+    validations:
+      required: false

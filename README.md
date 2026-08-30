@@ -1,5 +1,9 @@
 # React Debug Tools
 
+[![CI](https://github.com/Pavelgq/react-debug-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/Pavelgq/react-debug-tools/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/%40atmelab%2Freact-bugfinder)](https://www.npmjs.com/package/@atmelab/react-bugfinder)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A small collection of React hooks for debugging renders, state, and
 performance during development.
 
@@ -141,6 +145,13 @@ panels, or deep-equal comparisons:
 - `useVisualNesting` - highlights a component's DOM nesting depth
 - `useComponentTiming` / `useProfiler` - a manual `start()`/`stop()` timer for arbitrary code
 - `useMemoGuard` - throttled console reporting of how much cheaper/more expensive a memoized value is
+
+## Contributing
+
+Contributions are welcome - see [CONTRIBUTING.md](CONTRIBUTING.md) for dev
+setup, the PR process, and how to add a new hook. This project follows the
+[Contributor Covenant](CODE_OF_CONDUCT.md). Found a security issue? See
+[SECURITY.md](SECURITY.md).
 
 ## License
 
