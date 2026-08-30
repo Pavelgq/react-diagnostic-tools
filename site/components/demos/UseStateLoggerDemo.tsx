@@ -1,6 +1,6 @@
 'use client';
 
-import { useStateLogger } from '@atmelab/react-bugfinder';
+import { useStateLogger } from '@atmelab/react-diagnostic-tools';
 
 export function UseStateLoggerDemo() {
   const [count, setCount] = useStateLogger(0, 'count');

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { usePrevious } from '@atmelab/react-bugfinder';
+import { usePrevious } from '@atmelab/react-diagnostic-tools';
 
 export function UsePreviousDemo() {
   const [count, setCount] = useState(0);

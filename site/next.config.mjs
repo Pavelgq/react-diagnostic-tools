@@ -11,8 +11,8 @@ export default withNextra({
   images: {
     unoptimized: true,
   },
-  basePath: isGithubPages ? '/react-bugfinder' : '',
-  assetPrefix: isGithubPages ? '/react-bugfinder/' : '',
+  basePath: isGithubPages ? '/react-diagnostic-tools' : '',
+  assetPrefix: isGithubPages ? '/react-diagnostic-tools/' : '',
   turbopack: {
     resolveAlias: {
       'next-mdx-import-source-file': './mdx-components.tsx',

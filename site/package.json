@@ -1,5 +1,5 @@
 {
-  "name": "react-bugfinder-site",
+  "name": "react-diagnostic-tools-site",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "nextra-theme-docs": "^4.6.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "@atmelab/react-bugfinder": "file:.."
+    "@atmelab/react-diagnostic-tools": "file:.."
   },
   "devDependencies": {
     "@types/react": "^19.2.18",

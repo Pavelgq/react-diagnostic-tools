@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useMemo, useState } from 'react';
-import { useMemoPerformance } from '@atmelab/react-bugfinder';
+import { useMemoPerformance } from '@atmelab/react-diagnostic-tools';
 
 export function UseMemoPerformanceDemo() {
   const [count, setCount] = useState(0);

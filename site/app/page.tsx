@@ -73,25 +73,25 @@ const HomePage: FC = () => {
   return (
     <>
       <section className="rdt-hero">
-        <h1>React Bugfinder</h1>
+        <h1>React Diagnostic Tools</h1>
         <p className="rdt-tagline">
           A small collection of React hooks for debugging renders, state, and
           performance during development.
         </p>
-        <InstallCommand command="npm install @atmelab/react-bugfinder" />
+        <InstallCommand command="npm install @atmelab/react-diagnostic-tools" />
         <div className="rdt-hero-actions">
           <Link className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks
           </Link>
           <a
             className="rdt-btn"
-            href="https://github.com/Pavelgq/react-bugfinder"
+            href="https://github.com/Pavelgq/react-diagnostic-tools"
           >
             GitHub
           </a>
           <a
             className="rdt-btn"
-            href="https://www.npmjs.com/package/@atmelab/react-bugfinder"
+            href="https://www.npmjs.com/package/@atmelab/react-diagnostic-tools"
           >
             npm
           </a>

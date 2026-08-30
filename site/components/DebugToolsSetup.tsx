@@ -1,6 +1,6 @@
 'use client';
 
-import { configureDebugTools } from '@atmelab/react-bugfinder';
+import { configureDebugTools } from '@atmelab/react-diagnostic-tools';
 
 // This site is a demo of the library's own console output, so it needs
 // that output even though `next build` sets NODE_ENV=production (which the

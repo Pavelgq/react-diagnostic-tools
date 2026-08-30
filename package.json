@@ -1,8 +1,8 @@
 {
-  "name": "@atmelab/react-bugfinder",
+  "name": "@atmelab/react-diagnostic-tools",
   "version": "0.0.1",
   "type": "module",
-  "description": "React hooks library for debugging React applications",
+  "description": "A small collection of React hooks for debugging renders, state, and performance during development",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -26,10 +26,18 @@
   },
   "keywords": [
     "react",
+    "react-hooks",
     "hooks",
     "debug",
-    "development",
-    "tools"
+    "debugging",
+    "performance",
+    "profiling",
+    "diagnostics",
+    "devtools",
+    "render",
+    "re-render",
+    "state",
+    "development"
   ],
   "author": "Pavel Gordeev <pavelgq@yandex.ru>",
   "license": "MIT",
@@ -65,10 +73,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pavelgq/react-bugfinder.git"
+    "url": "https://github.com/Pavelgq/react-diagnostic-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/Pavelgq/react-bugfinder/issues"
+    "url": "https://github.com/Pavelgq/react-diagnostic-tools/issues"
   },
-  "homepage": "https://github.com/Pavelgq/react-bugfinder#readme"
+  "homepage": "https://github.com/Pavelgq/react-diagnostic-tools#readme"
 }

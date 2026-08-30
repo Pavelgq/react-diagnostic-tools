@@ -5,7 +5,7 @@ Returns the value from the previous render.
 ## Usage
 
 ```tsx
-import { usePrevious } from '@atmelab/react-bugfinder';
+import { usePrevious } from '@atmelab/react-diagnostic-tools';
 
 function Counter({ count }: { count: number }) {
   const previousCount = usePrevious(count);

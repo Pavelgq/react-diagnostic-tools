@@ -7,7 +7,7 @@ triggered the re-render.
 
 ```tsx
 import React from 'react';
-import { useWhyRender } from '@atmelab/react-bugfinder';
+import { useWhyRender } from '@atmelab/react-diagnostic-tools';
 
 interface MyComponentProps {
   name: string;

@@ -1,4 +1,4 @@
-# @atmelab/react-bugfinder
+# @atmelab/react-diagnostic-tools
 
 ## 0.0.1
 

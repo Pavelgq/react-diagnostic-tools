@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTraceRender } from '@atmelab/react-bugfinder';
+import { useTraceRender } from '@atmelab/react-diagnostic-tools';
 
 function Inner({ count }: { count: number }) {
   useTraceRender({ count }, 'Inner');
