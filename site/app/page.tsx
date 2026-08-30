@@ -13,6 +13,13 @@ interface Category {
   hooks: HookLink[];
 }
 
+const utilities: HookLink[] = [
+  {
+    name: 'withExecutionTiming',
+    description: 'Wraps any function so every call is timed and logged',
+  },
+];
+
 const categories: Category[] = [
   {
     title: 'Render debugging',
@@ -57,9 +64,9 @@ const categories: Category[] = [
           "Measures a function's execution time, with a warnIfAbove threshold",
       },
       {
-        name: 'useMemoGuard',
+        name: 'useMeasuredCallback',
         description:
-          'An on-demand A/B benchmark: measures a useMemo with and without the cache, on request',
+          "A drop-in useCallback that logs how long it takes every time it's called",
       },
     ],
   },
@@ -124,6 +131,25 @@ const HomePage: FC = () => {
             </Cards>
           </div>
         ))}
+      </section>
+
+      <section className="rdt-section">
+        <h2>Utilities</h2>
+        <p>Not a hook - works anywhere, not just inside a component.</p>
+        <Cards num={3}>
+          {utilities.map((utility) => (
+            <Cards.Card
+              key={utility.name}
+              title={utility.name}
+              href={`/utils/${utility.name}`}
+              arrow
+            >
+              <span style={{ display: 'block', padding: '1rem 1rem 0.25rem' }}>
+                {utility.description}
+              </span>
+            </Cards.Card>
+          ))}
+        </Cards>
       </section>
     </>
   );

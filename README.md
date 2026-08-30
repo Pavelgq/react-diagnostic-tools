@@ -81,13 +81,21 @@ follow the links below.
 | --- | --- |
 | [`useMemoPerformance`](src/hooks/performance/useMemoPerformance/README.md) | Analyzes whether a `useMemo` is actually worth it |
 | [`useExecutionTime`](src/hooks/performance/useExecutionTime/README.md) | Measures a function's execution time, with a `warnIfAbove` threshold |
-| [`useMemoGuard`](src/hooks/performance/useMemoGuard/README.md) | An on-demand A/B benchmark: measures a `useMemo` with and without the cache, on request |
+| [`useMeasuredCallback`](src/hooks/performance/useMeasuredCallback/README.md) | A drop-in `useCallback` that logs how long it takes every time it's called |
 
 ### State
 
 | Hook | Description |
 | --- | --- |
 | [`useStateLogger`](src/hooks/state/useStateLogger/README.md) | A drop-in `useState` that logs every change |
+
+## Utilities
+
+Not a hook - works anywhere, not just inside a component.
+
+| Utility | Description |
+| --- | --- |
+| [`withExecutionTiming`](src/utils/withExecutionTiming/README.md) | Wraps any function so every call is timed and logged |
 
 ## Global configuration
 

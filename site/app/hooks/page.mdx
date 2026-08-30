@@ -25,8 +25,14 @@ browser console to see the real log output).
 
 - [`useMemoPerformance`](/hooks/useMemoPerformance) - analyzes whether a `useMemo` is actually worth it
 - [`useExecutionTime`](/hooks/useExecutionTime) - measures a function's execution time, with a `warnIfAbove` threshold
-- [`useMemoGuard`](/hooks/useMemoGuard) - an on-demand A/B benchmark: measures a `useMemo` with and without the cache, on request
+- [`useMeasuredCallback`](/hooks/useMeasuredCallback) - a drop-in `useCallback` that logs how long it takes every time it's called
 
 ## State
 
 - [`useStateLogger`](/hooks/useStateLogger) - a drop-in `useState` that logs every change
+
+## Utilities
+
+Not a hook - works anywhere, not just inside a component.
+
+- [`withExecutionTiming`](/utils/withExecutionTiming) - wraps any function so every call is timed and logged

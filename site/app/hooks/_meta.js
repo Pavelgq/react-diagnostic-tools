@@ -21,6 +21,7 @@ export default {
   },
   useMemoPerformance: 'useMemoPerformance',
   useExecutionTime: 'useExecutionTime',
+  useMeasuredCallback: 'useMeasuredCallback',
   'sep-state': {
     type: 'separator',
     title: 'State',

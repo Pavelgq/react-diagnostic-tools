@@ -5,5 +5,5 @@ export * from './refs/usePrevious';
 export * from './refs/useTrackedValue';
 export * from './performance/useMemoPerformance';
 export * from './performance/useExecutionTime';
-export * from './performance/useMemoGuard';
+export * from './performance/useMeasuredCallback';
 export * from './state/useStateLogger';

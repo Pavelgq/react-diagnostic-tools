@@ -5,8 +5,11 @@ export { usePrevious } from './hooks/refs/usePrevious';
 export { useTrackedValue } from './hooks/refs/useTrackedValue';
 export { useMemoPerformance } from './hooks/performance/useMemoPerformance';
 export { useExecutionTime } from './hooks/performance/useExecutionTime';
-export { useMemoGuard } from './hooks/performance/useMemoGuard';
+export { useMeasuredCallback } from './hooks/performance/useMeasuredCallback';
 export { useStateLogger } from './hooks/state/useStateLogger';
+
+export { withExecutionTiming } from './utils/withExecutionTiming';
+export type { WithExecutionTimingOptions } from './utils/withExecutionTiming';
 
 export { configureDebugTools, getDebugToolsConfig } from './core/config';
 export type {
@@ -14,8 +17,3 @@ export type {
   DebugToolsConfig,
   DebugToolsOptions,
 } from './core';
-export type {
-  MemoGuardComparison,
-  MemoGuardResult,
-  UseMemoGuardOptions,
-} from './hooks/performance/useMemoGuard';

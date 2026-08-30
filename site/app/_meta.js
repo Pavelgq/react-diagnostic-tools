@@ -16,4 +16,8 @@ export default {
     title: 'Hooks',
     type: 'page',
   },
+  utils: {
+    title: 'Utilities',
+    type: 'page',
+  },
 };
