@@ -3,6 +3,8 @@
 A small collection of React hooks for debugging renders, state, and
 performance during development.
 
+📖 **[Docs and live demos](https://pavelgq.github.io/react-debug-tools/)**
+
 ## Install
 
 ```bash
