@@ -24,7 +24,7 @@ const navbar = (
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
         <Logo size={22} />
         <b>React Diagnostic Tools</b>{' '}
-        <span style={{ opacity: 0.6 }}>hooks for debugging React apps</span>
+        <span style={{ opacity: 0.6 }}>hooks for debugging, performance, and state</span>
       </span>
     }
     projectLink={REPO_URL}
