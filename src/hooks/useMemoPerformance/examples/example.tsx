@@ -83,10 +83,10 @@ export function MemoPerformanceExample() {
         <h3>📊 Performance stats:</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
           <li>
-            Calls: <strong>{performanceStats.callCount}</strong>
+            Renders: <strong>{performanceStats.renderCount}</strong>
           </li>
           <li>
-            Baseline time (first call):{' '}
+            Baseline time (most recent computation):{' '}
             <strong>{performanceStats.baselineTime.toFixed(3)}ms</strong>
           </li>
           <li>
@@ -98,12 +98,6 @@ export function MemoPerformanceExample() {
           <li>
             Cache efficiency:{' '}
             <strong>{performanceStats.cacheEfficiency.toFixed(1)}%</strong>
-          </li>
-          <li>
-            Memoization efficiency:{' '}
-            <strong>
-              {performanceStats.memoizationEfficiency.toFixed(1)}%
-            </strong>
           </li>
           <li>
             Is memoization worth it:{' '}

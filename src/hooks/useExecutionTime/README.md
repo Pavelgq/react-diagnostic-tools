@@ -14,6 +14,12 @@ Unlike `useMemoPerformance`, this hook doesn't try to analyze cache
 efficiency or recommend whether memoization is worth it - it's a simple
 stopwatch for one function.
 
+`duration` reads as `0` during server rendering and the client's first
+render, then updates to the real measurement right after hydration - a
+wall-clock timing can't be computed identically on the server and the
+client, so exposing it immediately would cause a hydration mismatch.
+`result` (the actual computed value) is unaffected and always correct.
+
 ## Usage
 
 ```tsx

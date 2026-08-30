@@ -26,7 +26,7 @@ describe('useMemoPerformance', () => {
       useMemoPerformance(computeFn, [1], { minCalls: 1, enableLogging: false })
     );
 
-    expect(result.current.callCount).toBe(1);
+    expect(result.current.cacheMisses).toBe(1);
     expect(result.current.baselineTime).toBe(5);
   });
 
@@ -45,46 +45,60 @@ describe('useMemoPerformance', () => {
     );
   });
 
-  it('recommends memoization for a slow function on its first call', () => {
+  it('accumulates cache hits across re-renders with unchanged deps, and ends up recommending memoization', () => {
     const computeFn = jest.fn(() => 'result');
 
-    mockPerformanceNow
-      .mockReturnValueOnce(0) // start
-      .mockReturnValueOnce(8); // end (8ms)
+    mockPerformanceNow.mockReturnValueOnce(0).mockReturnValueOnce(5); // one real computation, 5ms
 
-    const { result } = renderHook(() =>
-      useMemoPerformance(computeFn, [1], {
-        minCalls: 1,
-        performanceThreshold: 0.5,
-        enableLogging: false,
-      })
+    const { result, rerender } = renderHook(
+      ({ deps }) =>
+        useMemoPerformance(computeFn, deps, {
+          minCalls: 2,
+          performanceThreshold: 1,
+        }),
+      { initialProps: { deps: [1] } }
     );
 
+    expect(result.current.cacheMisses).toBe(1);
+    expect(result.current.cacheHits).toBe(0);
+
+    // Same dependency value both times - useMemo itself skips recomputing.
+    rerender({ deps: [1] });
+    rerender({ deps: [1] });
+
+    expect(computeFn).toHaveBeenCalledTimes(1);
+    expect(result.current.renderCount).toBe(3);
+    expect(result.current.cacheHits).toBe(2);
+    expect(result.current.cacheEfficiency).toBeCloseTo((2 / 3) * 100, 1);
     expect(result.current.isMemoizationWorthIt).toBe(true);
-    expect(result.current.recommendationReason).toContain('Slow function');
+    expect(result.current.recommendationReason).toContain(
+      'High cache efficiency'
+    );
   });
 
-  it('resets its stats when dependencies actually change', () => {
+  it('keeps accumulating stats across a genuine dependency change, without resetting', () => {
     const computeFn = jest.fn(() => 'result');
 
     mockPerformanceNow
       .mockReturnValueOnce(0)
-      .mockReturnValueOnce(1)
+      .mockReturnValueOnce(2) // first computation: 2ms
       .mockReturnValueOnce(0)
-      .mockReturnValueOnce(1);
+      .mockReturnValueOnce(3); // second computation, after a real deps change: 3ms
 
     const { result, rerender } = renderHook(
       ({ deps }) => useMemoPerformance(computeFn, deps, { minCalls: 1 }),
       { initialProps: { deps: [1] } }
     );
 
-    expect(result.current.callCount).toBe(1);
+    expect(result.current.cacheMisses).toBe(1);
 
-    // A real dependency change makes useMemo re-run its factory, which
-    // resets the tracked stats (see the known cache-tracking limitation below).
     rerender({ deps: [2] });
 
-    expect(result.current.callCount).toBe(1);
+    expect(computeFn).toHaveBeenCalledTimes(2);
+    expect(result.current.renderCount).toBe(2);
+    expect(result.current.cacheMisses).toBe(2);
+    expect(result.current.cacheHits).toBe(0);
+    expect(result.current.baselineTime).toBe(3);
   });
 
   it('logs results to the console when logging is enabled', () => {
@@ -150,15 +164,12 @@ describe('useMemoPerformance', () => {
     );
 
     expect(result.current).toMatchObject({
-      callCount: 1,
+      renderCount: 1,
       baselineTime: 10,
-      // Cache hits/efficiency currently stay 0 in every real usage: useMemo
-      // never re-runs its factory on unchanged deps, and a real deps change
-      // resets the stats before the factory runs. Tracked as a known
-      // limitation rather than fixed here.
       cacheHits: 0,
       cacheMisses: 1,
       cacheEfficiency: 0,
+      averageComputationCost: 10,
       isMemoizationWorthIt: expect.any(Boolean),
       recommendationReason: expect.any(String),
       warnings: expect.any(Array),

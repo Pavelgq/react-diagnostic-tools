@@ -4,15 +4,20 @@ A hook that analyzes `useMemo` performance and tells you whether it's actually w
 
 ## Description
 
-`useMemoPerformance` measures how long a computation takes and provides detailed statistics and a recommendation on whether memoization is helping.
+`useMemoPerformance` tracks how often `useMemo` actually recomputes vs.
+returns its cached value, and how long a real computation takes, then gives
+you a recommendation on whether memoizing is paying off.
 
 ## Features
 
-- 📊 **Timing** - measures the actual execution time of the function on its first run
+- 📊 **Timing** - measures the actual execution time of the function
 - 🎯 **Smart recommendations** - suggests whether memoization is worth it
-- 📈 **Detailed stats** - call count, computations, skips, cache and memoization efficiency
+- 📈 **Detailed stats** - render count, cache hits/misses, cache efficiency
 - ⚠️ **Warnings** - flags inefficient use of `useMemo`
 - 🔍 **Logging** - detailed performance reports in the console
+- 🌐 **SSR-safe** - the timing-derived stats read as zero during server
+  rendering and the client's first render, then update right after
+  hydration, so it won't cause a hydration mismatch
 
 ## Usage
 
@@ -71,7 +76,7 @@ The dependency list, forwarded straight to the underlying `useMemo`.
 
 ```tsx
 interface UseMemoPerformanceOptions {
-  /** Minimum number of calls before analyzing (default: 10) */
+  /** Minimum number of renders before analyzing (default: 10) */
   minCalls?: number;
   /** Threshold in milliseconds above which useMemo is considered worth it (default: 1) */
   performanceThreshold?: number;
@@ -86,23 +91,17 @@ interface UseMemoPerformanceOptions {
 
 ```tsx
 interface MemoPerformanceStats {
-  /** Execution time of the function on its first run (in milliseconds) */
+  /** Execution time of the function the last time it actually ran (in milliseconds) */
   baselineTime: number;
-  /** Number of times the function was called */
-  callCount: number;
-  /** Number of cache hits (when useMemo did not recompute) */
+  /** Total number of renders observed */
+  renderCount: number;
+  /** Number of renders where useMemo returned the cached value */
   cacheHits: number;
-  /** Number of cache misses (when useMemo did recompute) */
+  /** Number of renders where useMemo actually recomputed */
   cacheMisses: number;
-  /** Cache efficiency, in percent */
+  /** Cache efficiency, in percent: cacheHits / renderCount */
   cacheEfficiency: number;
-  /** Number of computations (when the function actually ran) */
-  computationCount: number;
-  /** Number of computations skipped thanks to memoization */
-  skippedComputations: number;
-  /** Memoization efficiency, in percent */
-  memoizationEfficiency: number;
-  /** Average cost of a computation (in milliseconds) */
+  /** Average cost of a computation across all cache misses (in milliseconds) */
   averageComputationCost: number;
   /** Recommendation: is memoization worth it here */
   isMemoizationWorthIt: boolean;
@@ -112,6 +111,10 @@ interface MemoPerformanceStats {
   warnings: string[];
 }
 ```
+
+These stats accumulate for the lifetime of the component - they don't reset
+when `deps` changes, since the interesting signal is the cache-hit rate
+*over time*, not since the last change.
 
 ## Examples
 
@@ -169,16 +172,14 @@ function SimpleCalculator({ a, b }) {
 ### When useMemo is worth it:
 
 - The computation takes more than 1-2 milliseconds
-- The function is called frequently on re-renders
-- Dependencies rarely change
+- Dependencies stay the same across most re-renders (a high cache-hit rate)
 - The computation involves heavier work (sorting, filtering large arrays)
 
 ### When useMemo is overkill:
 
 - Simple arithmetic operations
 - Fast computations (< 0.1ms)
-- The function is called rarely
-- Dependencies change on every render
+- Dependencies change on every render (a low cache-hit rate)
 
 ## Logging
 
@@ -186,15 +187,12 @@ When logging is enabled, the hook prints to the console:
 
 ```
 📊 ExpensiveCalculation - useMemo performance analysis
-Calls: 5
-Computations: 1
-Skipped: 4
+Renders: 5
 Baseline time: 2.150ms
 Average computation cost: 2.150ms
 Cache hits: 4
 Cache misses: 1
 Cache efficiency: 80.0%
-Memoization efficiency: 80.0%
 Is memoization worth it: ✅ Yes
 Reason: High cache efficiency (80.0%) and a slow function (2.150ms)
 ```
@@ -210,13 +208,5 @@ The hook automatically warns about potentially unnecessary `useMemo` usage:
 This happens when:
 
 - The function's execution time is < 0.1ms
-- Memoization efficiency is < 10%
+- Cache efficiency is < 10%
 - useMemo isn't providing a meaningful performance benefit
-
-## Known limitation
-
-Cache-hit tracking (`cacheHits`, `cacheEfficiency`) is currently always `0` in
-practice: `useMemo` simply doesn't call its factory again when dependencies
-are unchanged, so the "cache hit" branch inside it can't run, and a genuine
-dependency change resets the tracked stats before the factory runs. This is a
-known issue tracked for a future fix, not something you need to work around.

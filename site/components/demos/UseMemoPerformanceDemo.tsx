@@ -2,17 +2,8 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { useMemoPerformance } from '@atmelab/react-bugfinder';
-import { ClientOnly } from '../ClientOnly';
 
 export function UseMemoPerformanceDemo() {
-  return (
-    <ClientOnly fallback={<div className="rdt-demo">Loading demo…</div>}>
-      <UseMemoPerformanceDemoInner />
-    </ClientOnly>
-  );
-}
-
-function UseMemoPerformanceDemoInner() {
   const [count, setCount] = useState(0);
   const [items, setItems] = useState(50000);
 
@@ -22,11 +13,8 @@ function UseMemoPerformanceDemoInner() {
       .reduce((sum, n) => sum + n, 0);
   }, [items]);
 
-  // minCalls: 1 - useMemoPerformance's call count currently never grows past 1
-  // in real usage (see its README's "Known limitation"), so a higher
-  // threshold here would mean the console report never appears.
   const stats = useMemoPerformance(expensiveCalculation, [items], {
-    minCalls: 1,
+    minCalls: 3,
     performanceThreshold: 1,
     enableLogging: true,
     name: 'ExpensiveCalculation',
@@ -56,11 +44,14 @@ function UseMemoPerformanceDemoInner() {
       <p>Result: {memoizedValue}</p>
 
       <div className="rdt-demo-stats">
-        Calls: <strong>{stats.callCount}</strong> · baseline:{' '}
+        Renders: <strong>{stats.renderCount}</strong> · baseline:{' '}
         <strong>{stats.baselineTime.toFixed(3)}ms</strong>
         <br />
-        Memoization efficiency:{' '}
-        <strong>{stats.memoizationEfficiency.toFixed(1)}%</strong>
+        Cache hits / misses:{' '}
+        <strong>
+          {stats.cacheHits} / {stats.cacheMisses}
+        </strong>{' '}
+        · efficiency: <strong>{stats.cacheEfficiency.toFixed(1)}%</strong>
         <br />
         Worth it:{' '}
         <strong>{stats.isMemoizationWorthIt ? 'Yes ✅' : 'No ❌'}</strong> -{' '}
@@ -68,9 +59,9 @@ function UseMemoPerformanceDemoInner() {
       </div>
 
       <p className="rdt-demo-note">
-        Open the browser console for the full performance report. Re-render
-        with the same item count to see cached calls; change the item count
-        to force a fresh computation.
+        Open the browser console for the full performance report.
+        Re-render with the same item count to see cache hits accumulate;
+        change the item count to force a fresh computation (a miss).
       </p>
     </div>
   );
