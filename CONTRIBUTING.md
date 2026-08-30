@@ -45,11 +45,12 @@ own `package.json` and lockfile) that depends on the library via a local
 
 ## Adding a new hook
 
-Each hook lives in its own folder under `src/hooks/<name>/`, following the
-pattern of the existing ones:
+Each hook lives in its own folder under `src/hooks/<category>/<name>/`,
+grouped by category (`render-debugging`, `refs`, `performance`, `state`),
+following the pattern of the existing ones:
 
 ```
-src/hooks/useYourHook/
+src/hooks/<category>/useYourHook/
 ├── index.ts          # re-exports the hook
 ├── useYourHook.ts     # the implementation
 ├── __tests__/

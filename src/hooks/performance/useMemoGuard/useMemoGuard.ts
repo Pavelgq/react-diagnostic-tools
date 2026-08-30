@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
+import { getDebugToolsConfig } from '../../../core/config';
 
 export interface MemoGuardComparison {
   /** Cost of calling the factory fresh, bypassing the cache (in milliseconds). */

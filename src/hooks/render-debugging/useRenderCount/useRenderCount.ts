@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
+import { getDebugToolsConfig } from '../../../core/config';
 
 /**
  * Returns how many times this component has rendered, for any reason

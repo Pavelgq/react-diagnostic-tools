@@ -1,5 +1,5 @@
 import { useDebugValue, useLayoutEffect, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
+import { getDebugToolsConfig } from '../../../core/config';
 
 /**
  * Labels a value for React DevTools (via `useDebugValue`) and logs to the

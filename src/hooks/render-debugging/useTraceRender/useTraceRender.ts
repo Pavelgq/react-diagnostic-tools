@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
-import { diffProps } from '../../core/diffProps';
+import { getDebugToolsConfig } from '../../../core/config';
+import { diffProps } from '../../../core/diffProps';
 
 /**
  * Logs every render of a component with its full current props, whether or

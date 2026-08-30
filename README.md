@@ -64,30 +64,30 @@ follow the links below.
 
 | Hook | Description |
 | --- | --- |
-| [`useWhyRender`](src/hooks/useWhyRender/README.md) | Logs which props changed and caused a re-render |
-| [`useRenderCount`](src/hooks/useRenderCount/README.md) | Counts every render, regardless of cause |
-| [`useTraceRender`](src/hooks/useTraceRender/README.md) | Logs the full props on every render, changed or not |
+| [`useWhyRender`](src/hooks/render-debugging/useWhyRender/README.md) | Logs which props changed and caused a re-render |
+| [`useRenderCount`](src/hooks/render-debugging/useRenderCount/README.md) | Counts every render, regardless of cause |
+| [`useTraceRender`](src/hooks/render-debugging/useTraceRender/README.md) | Logs the full props on every render, changed or not |
 
 ### Refs
 
 | Hook | Description |
 | --- | --- |
-| [`usePrevious`](src/hooks/usePrevious/README.md) | Returns the value from the previous render |
-| [`useTrackedValue`](src/hooks/useTrackedValue/README.md) | Labels a value in DevTools and logs it on change |
+| [`usePrevious`](src/hooks/refs/usePrevious/README.md) | Returns the value from the previous render |
+| [`useTrackedValue`](src/hooks/refs/useTrackedValue/README.md) | Labels a value in DevTools and logs it on change |
 
 ### Performance
 
 | Hook | Description |
 | --- | --- |
-| [`useMemoPerformance`](src/hooks/useMemoPerformance/README.md) | Analyzes whether a `useMemo` is actually worth it |
-| [`useExecutionTime`](src/hooks/useExecutionTime/README.md) | Measures a function's execution time, with a `warnIfAbove` threshold |
-| [`useMemoGuard`](src/hooks/useMemoGuard/README.md) | An on-demand A/B benchmark: measures a `useMemo` with and without the cache, on request |
+| [`useMemoPerformance`](src/hooks/performance/useMemoPerformance/README.md) | Analyzes whether a `useMemo` is actually worth it |
+| [`useExecutionTime`](src/hooks/performance/useExecutionTime/README.md) | Measures a function's execution time, with a `warnIfAbove` threshold |
+| [`useMemoGuard`](src/hooks/performance/useMemoGuard/README.md) | An on-demand A/B benchmark: measures a `useMemo` with and without the cache, on request |
 
 ### State
 
 | Hook | Description |
 | --- | --- |
-| [`useStateLogger`](src/hooks/useStateLogger/README.md) | A drop-in `useState` that logs every change |
+| [`useStateLogger`](src/hooks/state/useStateLogger/README.md) | A drop-in `useState` that logs every change |
 
 ## Global configuration
 

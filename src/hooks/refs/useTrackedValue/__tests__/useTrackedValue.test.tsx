@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { configureDebugTools, resetDebugToolsConfig } from '../../../core/config';
+import { configureDebugTools, resetDebugToolsConfig } from '../../../../core/config';
 import { useTrackedValue } from '../useTrackedValue';
 
 describe('useTrackedValue', () => {

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
-import { diffProps, type PropChange } from '../../core/diffProps';
+import { getDebugToolsConfig } from '../../../core/config';
+import { diffProps, type PropChange } from '../../../core/diffProps';
 
 interface WhyRenderInfo {
   changedProps: Record<string, PropChange>;

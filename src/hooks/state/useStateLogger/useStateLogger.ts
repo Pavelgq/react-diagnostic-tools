@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
+import { getDebugToolsConfig } from '../../../core/config';
 
 /**
  * A drop-in replacement for `useState` that logs every state change to the

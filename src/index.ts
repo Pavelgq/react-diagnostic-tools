@@ -1,12 +1,12 @@
-export { useWhyRender } from './hooks/useWhyRender';
-export { useMemoPerformance } from './hooks/useMemoPerformance';
-export { usePrevious } from './hooks/usePrevious';
-export { useRenderCount } from './hooks/useRenderCount';
-export { useTraceRender } from './hooks/useTraceRender';
-export { useStateLogger } from './hooks/useStateLogger';
-export { useTrackedValue } from './hooks/useTrackedValue';
-export { useExecutionTime } from './hooks/useExecutionTime';
-export { useMemoGuard } from './hooks/useMemoGuard';
+export { useWhyRender } from './hooks/render-debugging/useWhyRender';
+export { useRenderCount } from './hooks/render-debugging/useRenderCount';
+export { useTraceRender } from './hooks/render-debugging/useTraceRender';
+export { usePrevious } from './hooks/refs/usePrevious';
+export { useTrackedValue } from './hooks/refs/useTrackedValue';
+export { useMemoPerformance } from './hooks/performance/useMemoPerformance';
+export { useExecutionTime } from './hooks/performance/useExecutionTime';
+export { useMemoGuard } from './hooks/performance/useMemoGuard';
+export { useStateLogger } from './hooks/state/useStateLogger';
 
 export { configureDebugTools, getDebugToolsConfig } from './core/config';
 export type {
@@ -18,4 +18,4 @@ export type {
   MemoGuardComparison,
   MemoGuardResult,
   UseMemoGuardOptions,
-} from './hooks/useMemoGuard';
+} from './hooks/performance/useMemoGuard';

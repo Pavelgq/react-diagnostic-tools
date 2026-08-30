@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { configureDebugTools, resetDebugToolsConfig } from '../../../core/config';
+import { configureDebugTools, resetDebugToolsConfig } from '../../../../core/config';
 import { useMemoGuard } from '../useMemoGuard';
 
 const mockPerformanceNow = jest.fn();

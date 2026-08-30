@@ -1,6 +1,6 @@
 import type React from 'react';
 import { render } from '@testing-library/react';
-import { configureDebugTools, resetDebugToolsConfig } from '../../../core/config';
+import { configureDebugTools, resetDebugToolsConfig } from '../../../../core/config';
 import { useRenderCount } from '../useRenderCount';
 
 const TestComponent: React.FC<{ label: string }> = ({ label }) => {

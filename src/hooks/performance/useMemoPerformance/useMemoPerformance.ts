@@ -1,7 +1,7 @@
 import { useLayoutEffect, useMemo, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
-import { createRateLimiter } from '../../core/throttle';
-import { useIsHydrated } from '../../core/useIsHydrated';
+import { getDebugToolsConfig } from '../../../core/config';
+import { createRateLimiter } from '../../../core/throttle';
+import { useIsHydrated } from '../../../core/useIsHydrated';
 
 interface MemoPerformanceStats {
   /** Execution time of the function the last time it actually ran (in milliseconds) */

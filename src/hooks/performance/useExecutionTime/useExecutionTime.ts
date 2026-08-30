@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useRef } from 'react';
-import { getDebugToolsConfig } from '../../core/config';
-import { useIsHydrated } from '../../core/useIsHydrated';
+import { getDebugToolsConfig } from '../../../core/config';
+import { useIsHydrated } from '../../../core/useIsHydrated';
 
 interface UseExecutionTimeOptions {
   /** Log a warning via the configured logger when duration exceeds this many milliseconds. */

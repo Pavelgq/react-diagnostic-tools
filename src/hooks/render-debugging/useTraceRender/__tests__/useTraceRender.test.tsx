@@ -1,6 +1,6 @@
 import type React from 'react';
 import { render } from '@testing-library/react';
-import { configureDebugTools, resetDebugToolsConfig } from '../../../core/config';
+import { configureDebugTools, resetDebugToolsConfig } from '../../../../core/config';
 import { useTraceRender } from '../useTraceRender';
 
 const TestComponent: React.FC<{ a: number; b: string }> = ({ a, b }) => {
