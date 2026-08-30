@@ -1,0 +1,1 @@
+export { useWhyRender } from './useWhyRender';
