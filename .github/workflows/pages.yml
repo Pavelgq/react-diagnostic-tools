@@ -40,6 +40,8 @@ jobs:
 
       - name: Build the static site
         run: npm run build --workspace=site
+        env:
+          GITHUB_PAGES: 'true'
 
       - uses: actions/configure-pages@v5
 

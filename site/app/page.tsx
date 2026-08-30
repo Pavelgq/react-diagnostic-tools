@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import Link from 'next/link';
 import { Cards } from 'nextra/components';
 
 interface HookLink {
@@ -78,9 +79,9 @@ const HomePage: FC = () => {
         </p>
         <code className="rdt-install">npm install react-debug-tools</code>
         <div className="rdt-hero-actions">
-          <a className="rdt-btn rdt-btn-primary" href="/hooks">
+          <Link className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks
-          </a>
+          </Link>
           <a
             className="rdt-btn"
             href="https://github.com/Pavelgq/react-debug-tools"
