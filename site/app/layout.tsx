@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
-import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import { Logo } from '../components/Logo';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
+
+const REPO_URL = 'https://github.com/Pavelgq/react-debug-tools';
 
 export const metadata: Metadata = {
   title: {
@@ -18,12 +20,13 @@ export const metadata: Metadata = {
 const navbar = (
   <Navbar
     logo={
-      <span>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Logo size={22} />
         <b>React Debug Tools</b>{' '}
         <span style={{ opacity: 0.6 }}>hooks for debugging React apps</span>
       </span>
     }
-    projectLink="#"
+    projectLink={REPO_URL}
   />
 );
 
@@ -39,7 +42,6 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const pageMap = await getPageMap();
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="🐞" />
       <body>
         <Layout
           navbar={navbar}

@@ -81,10 +81,16 @@ const HomePage: FC = () => {
           <a className="rdt-btn rdt-btn-primary" href="/hooks">
             Browse the hooks
           </a>
-          <a className="rdt-btn" href="#">
+          <a
+            className="rdt-btn"
+            href="https://github.com/Pavelgq/react-debug-tools"
+          >
             GitHub
           </a>
-          <a className="rdt-btn" href="#">
+          <a
+            className="rdt-btn"
+            href="https://www.npmjs.com/package/react-debug-tools"
+          >
             npm
           </a>
         </div>
@@ -103,7 +109,7 @@ const HomePage: FC = () => {
                   href={`/hooks/${hook.name}`}
                   arrow
                 >
-                  <span style={{ display: 'block', padding: '0 1rem 1rem' }}>
+                  <span style={{ display: 'block', padding: '1rem 1rem 0.25rem' }}>
                     {hook.description}
                   </span>
                 </Cards.Card>
