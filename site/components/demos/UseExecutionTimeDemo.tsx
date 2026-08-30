@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useExecutionTime } from 'react-debug-tools';
+import { useExecutionTime } from '@atmelab/react-bugfinder';
 import { ClientOnly } from '../ClientOnly';
 
 export function UseExecutionTimeDemo() {

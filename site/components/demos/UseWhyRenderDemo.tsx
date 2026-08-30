@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useWhyRender } from 'react-debug-tools';
+import { useWhyRender } from '@atmelab/react-bugfinder';
 
 interface InnerProps {
   name: string;

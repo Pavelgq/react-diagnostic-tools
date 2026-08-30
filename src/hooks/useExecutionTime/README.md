@@ -17,7 +17,7 @@ stopwatch for one function.
 ## Usage
 
 ```tsx
-import { useExecutionTime } from 'react-debug-tools';
+import { useExecutionTime } from '@atmelab/react-bugfinder';
 
 function DataTable({ rows }: { rows: Row[] }) {
   const { result: sorted, duration } = useExecutionTime(

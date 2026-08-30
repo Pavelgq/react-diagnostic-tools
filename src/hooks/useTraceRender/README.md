@@ -13,7 +13,7 @@ or a parent re-rendering with referentially-equal props.
 ## Usage
 
 ```tsx
-import { useTraceRender } from 'react-debug-tools';
+import { useTraceRender } from '@atmelab/react-bugfinder';
 
 function MyComponent(props: { name: string; age: number }) {
   useTraceRender(props, 'MyComponent');

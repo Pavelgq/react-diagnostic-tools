@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useMemo, useState } from 'react';
-import { useMemoPerformance } from 'react-debug-tools';
+import { useMemoPerformance } from '@atmelab/react-bugfinder';
 import { ClientOnly } from '../ClientOnly';
 
 export function UseMemoPerformanceDemo() {

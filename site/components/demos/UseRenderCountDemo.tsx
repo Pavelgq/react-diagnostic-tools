@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRenderCount } from 'react-debug-tools';
+import { useRenderCount } from '@atmelab/react-bugfinder';
 
 export function UseRenderCountDemo() {
   const [count, setCount] = useState(0);

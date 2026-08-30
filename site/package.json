@@ -14,7 +14,7 @@
     "nextra-theme-docs": "^4.6.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-debug-tools": "file:.."
+    "@atmelab/react-bugfinder": "file:.."
   },
   "devDependencies": {
     "@types/react": "^19.2.18",

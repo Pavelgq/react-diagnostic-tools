@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTrackedValue } from 'react-debug-tools';
+import { useTrackedValue } from '@atmelab/react-bugfinder';
 
 export function UseTrackedValueDemo() {
   const [items, setItems] = useState(['a', 'b', '']);

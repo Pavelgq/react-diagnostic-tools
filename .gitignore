@@ -47,3 +47,6 @@ site/out/
 site/AGENTS.md
 site/CLAUDE.md
 
+# Claude Code local session state
+.claude/
+

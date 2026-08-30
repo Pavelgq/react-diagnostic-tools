@@ -8,13 +8,13 @@ performance during development.
 ## Install
 
 ```bash
-npm install react-debug-tools
+npm install @atmelab/react-bugfinder
 ```
 
 ## Quick start
 
 ```tsx
-import { useWhyRender } from 'react-debug-tools';
+import { useWhyRender } from '@atmelab/react-bugfinder';
 
 function MyComponent(props: { name: string; age: number }) {
   useWhyRender(props, 'MyComponent');
@@ -27,7 +27,7 @@ output globally, or throttle noisy logs, call `configureDebugTools` once at
 your app's entry point:
 
 ```tsx
-import { configureDebugTools } from 'react-debug-tools';
+import { configureDebugTools } from '@atmelab/react-bugfinder';
 
 configureDebugTools({
   enabled: process.env.NODE_ENV !== 'production',

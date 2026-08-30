@@ -11,7 +11,7 @@ context, or a parent re-rendering with referentially-equal props.
 ## Usage
 
 ```tsx
-import { useRenderCount } from 'react-debug-tools';
+import { useRenderCount } from '@atmelab/react-bugfinder';
 
 function MyComponent() {
   const renderCount = useRenderCount('MyComponent');

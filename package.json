@@ -1,5 +1,5 @@
 {
-  "name": "react-debug-tools",
+  "name": "@atmelab/react-bugfinder",
   "version": "0.0.1",
   "type": "module",
   "description": "React hooks library for debugging React applications",
@@ -36,6 +36,9 @@
   ],
   "author": "Pavel Gordeev <pavelgq@yandex.ru>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": ">=16.8.0 <20",
     "react-dom": ">=16.8.0 <20"
@@ -65,10 +68,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pavelgordeev/react-debug-tools.git"
+    "url": "https://github.com/Pavelgq/react-debug-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/pavelgordeev/react-debug-tools/issues"
+    "url": "https://github.com/Pavelgq/react-debug-tools/issues"
   },
-  "homepage": "https://github.com/pavelgordeev/react-debug-tools#readme"
+  "homepage": "https://github.com/Pavelgq/react-debug-tools#readme"
 }

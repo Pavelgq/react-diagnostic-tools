@@ -13,7 +13,7 @@ It does not log on the initial render.
 ## Usage
 
 ```tsx
-import { useStateLogger } from 'react-debug-tools';
+import { useStateLogger } from '@atmelab/react-bugfinder';
 
 function Counter() {
   const [count, setCount] = useStateLogger(0, 'count');

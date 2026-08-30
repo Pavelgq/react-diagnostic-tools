@@ -17,7 +17,7 @@ A hook that analyzes `useMemo` performance and tells you whether it's actually w
 ## Usage
 
 ```tsx
-import { useMemoPerformance } from 'react-debug-tools';
+import { useMemoPerformance } from '@atmelab/react-bugfinder';
 
 function MyComponent({ items }) {
   const expensiveCalculation = () => {
