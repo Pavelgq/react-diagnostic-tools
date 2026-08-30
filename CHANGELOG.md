@@ -1,0 +1,25 @@
+# react-debug-tools
+
+## 0.0.1
+
+### Added
+
+- `useWhyRender` - logs which props changed and caused a re-render
+- `useRenderCount` - counts every render, regardless of cause
+- `useTraceRender` - logs the full props on every render, changed or not
+- `usePrevious` - returns the value from the previous render
+- `useTrackedValue` - labels a value in DevTools and logs it on change
+- `useMemoPerformance` - analyzes whether a `useMemo` is actually worth it
+- `useExecutionTime` - measures a function's execution time with a `warnIfAbove` threshold
+- `useStateLogger` - a drop-in `useState` that logs every change
+- `configureDebugTools` - global configuration for the logger, enabled state, and log throttling
+- A documentation and landing site built with Nextra, with a live demo per hook
+
+### Changed
+
+- Modernized the toolchain: React 19, TypeScript 6, and Biome instead of ESLint/Prettier
+- Set up [Changesets](https://github.com/changesets/changesets) to manage future version bumps and this changelog
+
+### Known limitations
+
+- `useMemoPerformance`'s cache-hit tracking (`cacheHits`, `cacheEfficiency`) is currently always `0` in practice - see [its README](src/hooks/useMemoPerformance/README.md#known-limitation) for details
