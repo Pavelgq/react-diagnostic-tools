@@ -31,7 +31,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: Create a "Version Packages" PR, or publish if one was just merged
         uses: changesets/action@v1

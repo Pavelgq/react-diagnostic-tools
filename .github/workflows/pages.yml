@@ -31,7 +31,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       # The site imports react-debug-tools from dist/, so the library must
       # be built before the site is.
