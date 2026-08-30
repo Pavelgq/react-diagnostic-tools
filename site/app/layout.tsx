@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { getPageMap } from 'nextra/page-map';
+import { DebugToolsSetup } from '../components/DebugToolsSetup';
 import { Logo } from '../components/Logo';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
@@ -43,6 +44,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body>
+        <DebugToolsSetup />
         <Layout
           navbar={navbar}
           footer={footer}

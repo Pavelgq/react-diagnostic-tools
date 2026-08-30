@@ -51,4 +51,16 @@ describe('debug tools config', () => {
       throttleMs: 0,
     });
   });
+
+  it('defaults to disabled when NODE_ENV is "production"', () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+
+    jest.isolateModules(() => {
+      const prodConfig = require('../config');
+      expect(prodConfig.getDebugToolsConfig().enabled).toBe(false);
+    });
+
+    process.env.NODE_ENV = originalNodeEnv;
+  });
 });

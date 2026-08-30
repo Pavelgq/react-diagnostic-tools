@@ -11,7 +11,8 @@ performance during development.
 
 ## Install
 
-It's a dev-time debugging tool, so it belongs in `devDependencies`:
+It's a dev-time debugging tool, so it belongs in `devDependencies` - though
+that's just hygiene, not the safety net (see below):
 
 ```bash
 npm install --save-dev @atmelab/react-bugfinder
@@ -28,15 +29,19 @@ function MyComponent(props: { name: string; age: number }) {
 }
 ```
 
-Every hook logs to the console by default. To swap the logger, disable
-output globally, or throttle noisy logs, call `configureDebugTools` once at
-your app's entry point:
+Every hook logs to the console, but **only when `process.env.NODE_ENV` isn't
+`"production"`** - all output is off by default in a production build,
+regardless of how the package ended up in your bundle. This relies on your
+bundler statically replacing `process.env.NODE_ENV` (Next.js, Create React
+App, Vite-with-the-React-plugin, and most other React toolchains already do
+this). To override the default, swap the logger, or throttle noisy logs,
+call `configureDebugTools` once at your app's entry point:
 
 ```tsx
 import { configureDebugTools } from '@atmelab/react-bugfinder';
 
 configureDebugTools({
-  enabled: process.env.NODE_ENV !== 'production',
+  enabled: true, // e.g. force it on even in a production build, for a staging environment
   throttleMs: 200,
   // logger: myCustomLogger, // any object matching the `Logger` interface
 });
@@ -85,7 +90,7 @@ function configureDebugTools(options: {
 }): void;
 ```
 
-- `enabled` - master switch for all console output from every hook (default: `true`)
+- `enabled` - master switch for all console output from every hook (default: `false` when a bundler-injected `process.env.NODE_ENV` reads `"production"`, `true` otherwise)
 - `logger` - swap the default `console`-based logger for your own implementation of the `Logger` interface (`log`, `warn`, `group`, `groupEnd`)
 - `throttleMs` - minimum time between log emissions for hot-path hooks like `useMemoPerformance` and `useExecutionTime` (default: `0`, no throttling)
 
@@ -146,7 +151,7 @@ panels, or deep-equal comparisons:
 - `useNetworkActivity` - tracks in-flight HTTP requests to spot leaks or excessive polling
 - `useVisualNesting` - highlights a component's DOM nesting depth
 - `useComponentTiming` / `useProfiler` - a manual `start()`/`stop()` timer for arbitrary code
-- `useMemoGuard` - throttled console reporting of how much cheaper/more expensive a memoized value is
+- `useMemoGuard` - a real, on-demand A/B benchmark for a `useMemo`: exposes a "run comparison" trigger (e.g. a diagnostic button) that actually re-invokes the computation both with and without memoization at runtime and logs the two timings side by side, instead of `useMemoPerformance`'s inferred cache-hit-rate estimate
 
 ## Contributing
 

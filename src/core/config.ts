@@ -1,7 +1,12 @@
 import { type Logger, consoleLogger } from './logger';
 
 export interface DebugToolsConfig {
-  /** Master switch for all console output from every hook in this package. */
+  /**
+   * Master switch for all console output from every hook in this package.
+   * Defaults to `false` when a bundler-injected `process.env.NODE_ENV`
+   * reads `"production"`, `true` otherwise - this is a debugging tool, so
+   * it stays quiet in production builds unless you explicitly turn it on.
+   */
   enabled: boolean;
   /** Logger used for all console output. Swap it for your own implementation of the `Logger` interface. */
   logger: Logger;
@@ -11,8 +16,16 @@ export interface DebugToolsConfig {
 
 export type DebugToolsOptions = Partial<DebugToolsConfig>;
 
+// `process.env.NODE_ENV` is written in the plain, non-optional-chained form
+// bundlers (webpack, Next.js, etc.) recognize and statically replace at
+// build time - most apps never see the `typeof process` branch at runtime
+// at all. Guarded so it's also safe in environments with no `process`.
+declare const process: { env: { NODE_ENV?: string } } | undefined;
+const isProductionEnv =
+  typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
+
 const defaultConfig: DebugToolsConfig = {
-  enabled: true,
+  enabled: !isProductionEnv,
   logger: consoleLogger,
   throttleMs: 0,
 };
