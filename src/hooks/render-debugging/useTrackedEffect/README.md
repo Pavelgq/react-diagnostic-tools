@@ -1,0 +1,73 @@
+# useTrackedEffect
+
+Wraps `useEffect` and reports which dependency changed and caused it to
+re-run.
+
+## Description
+
+The same idea as [`useWhyRender`](../useWhyRender/README.md), applied to
+effects instead of renders. Only logs when React actually calls the effect
+- it relies on React's own dependency comparison rather than a separate
+one, so the report always matches the real reason the effect ran.
+
+`deps` stays a plain array, same as the native `useEffect`, so this is a
+drop-in replacement. Since a plain array has no names, pass `depNames` to
+label each position in the console output - without it, dependencies are
+labeled `dep[0]`, `dep[1]`, etc.
+
+`useEffect` never runs during server rendering, so unlike
+[`useMemoPerformance`](../../performance/useMemoPerformance/README.md)/[`useExecutionTime`](../../performance/useExecutionTime/README.md)
+this hook needs no SSR-safety handling.
+
+## Usage
+
+```tsx
+import { useTrackedEffect } from '@atme-lab/react-diagnostic-tools';
+
+function UserProfile({ userId, query }: { userId: number; query: string }) {
+  useTrackedEffect(
+    () => {
+      fetchUser(userId, query);
+    },
+    [userId, query],
+    { name: 'fetchUser', depNames: ['userId', 'query'] }
+  );
+
+  // ...
+}
+```
+
+## API
+
+```tsx
+function useTrackedEffect(
+  effect: React.EffectCallback,
+  deps: React.DependencyList,
+  options?: UseTrackedEffectOptions
+): void;
+```
+
+#### options (optional)
+
+```tsx
+interface UseTrackedEffectOptions {
+  /** Name used in the console output (default: 'useTrackedEffect') */
+  name?: string;
+  /**
+   * Labels for each dependency, matched positionally to `deps`. Falls back
+   * to `dep[0]`, `dep[1]`, ... for any dependency without a label.
+   */
+  depNames?: string[];
+}
+```
+
+## Console output example
+
+```
+🎯 fetchUser - effect ran (initial)
+Dependencies: { userId: 1, query: '' }
+
+🎯 fetchUser - effect re-ran
+Changed dependencies: { query: { from: '', to: 'react' } }
+All dependencies: { userId: 1, query: 'react' }
+```

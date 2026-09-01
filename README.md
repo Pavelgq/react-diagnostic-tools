@@ -67,6 +67,7 @@ follow the links below.
 | [`useWhyRender`](src/hooks/render-debugging/useWhyRender/README.md) | Logs which props changed and caused a re-render |
 | [`useRenderCount`](src/hooks/render-debugging/useRenderCount/README.md) | Counts every render, regardless of cause |
 | [`useTraceRender`](src/hooks/render-debugging/useTraceRender/README.md) | Logs the full props on every render, changed or not |
+| [`useTrackedEffect`](src/hooks/render-debugging/useTrackedEffect/README.md) | Wraps `useEffect` and reports which dependency changed |
 
 ### Refs
 
@@ -156,7 +157,6 @@ the most common debugging needs. A larger backlog of ideas exists for
 follow-up releases, mostly heavier tools involving DOM overlays, global
 panels, or deep-equal comparisons:
 
-- `useTrackedEffect` - wraps `useEffect` to report which dependency triggered it
 - `useDeepComparison` - a deep-equal version of prop/dependency change detection
 - `useContextChanges` - subscribes to a context and logs every value change
 - `useRenderHighlight` - highlights a component on screen when it re-renders

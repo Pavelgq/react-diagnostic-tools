@@ -1,6 +1,7 @@
 export * from './render-debugging/useWhyRender';
 export * from './render-debugging/useRenderCount';
 export * from './render-debugging/useTraceRender';
+export * from './render-debugging/useTrackedEffect';
 export * from './refs/usePrevious';
 export * from './refs/useTrackedValue';
 export * from './performance/useMemoPerformance';

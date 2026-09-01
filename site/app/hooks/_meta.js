@@ -9,6 +9,7 @@ export default {
   useWhyRender: 'useWhyRender',
   useRenderCount: 'useRenderCount',
   useTraceRender: 'useTraceRender',
+  useTrackedEffect: 'useTrackedEffect',
   'sep-refs': {
     type: 'separator',
     title: 'Refs',

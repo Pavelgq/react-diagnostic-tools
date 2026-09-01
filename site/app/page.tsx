@@ -36,6 +36,10 @@ const categories: Category[] = [
         name: 'useTraceRender',
         description: 'Logs the full props on every render, changed or not',
       },
+      {
+        name: 'useTrackedEffect',
+        description: "Wraps useEffect and reports which dependency changed",
+      },
     ],
   },
   {
@@ -111,7 +115,7 @@ const HomePage: FC = () => {
       </section>
 
       <section className="rdt-section">
-        <h2>9 hooks, 4 categories</h2>
+        <h2>10 hooks, 4 categories</h2>
         {categories.map((category) => (
           <div className="rdt-category" key={category.title}>
             <h3>{category.title}</h3>
