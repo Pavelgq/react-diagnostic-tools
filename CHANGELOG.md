@@ -1,5 +1,11 @@
 # @atme-lab/react-diagnostic-tools
 
+## 0.2.0
+
+### Minor Changes
+
+- 8880239: Add `useTrackedEffect`, which wraps `useEffect` and reports which dependency changed and caused it to re-run - the same idea as `useWhyRender`, applied to effects instead of renders.
+
 ## 0.1.0
 
 ### Minor Changes
