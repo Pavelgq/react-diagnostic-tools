@@ -1,6 +1,6 @@
 {
   "name": "@atme-lab/react-diagnostic-tools",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "A small collection of React hooks for debugging renders, state, and performance during development",
   "main": "dist/index.js",
